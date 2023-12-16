@@ -24,3 +24,46 @@ function getComputerChoice() {
         computerChoice = "Scissors";
     return computerChoice;
 }
+
+/*
+* Plays a round of rock paper scissors and determines if the player or computer wins
+* @param {String} playerChoice
+* @param {String} computerChoice
+* @return {String} whoWins
+*/
+function playRound(playerChoice = "Rock", computerChoice = "Rock") {
+    // create variable to for whoWon
+    let whoWon = "";
+    // make playerChoice uppercase so function isn't case sensitive
+    let playerChoiceUpper = playerChoice.toUpperCase();
+    // make computerChoice uppercase so function isn't case sensitive
+    let computerChoiceUpper = computerChoice.toUpperCase();
+    // convert playerChoice to a number for easier comparision
+    let playerChoiceNumber = 0;
+    if (playerChoiceUpper === "ROCK")
+        playerChoiceNumber = 1;
+    else if (playerChoiceUpper === "PAPER")
+        playerChoiceNumber = 2;
+    else
+        playerChoiceNumber = 3;
+    // convert computerChoice to a number for easier comparision
+    let computerChoiceNumber = 0;
+    if (computerChoiceUpper === "ROCK")
+        computerChoiceNumber = 1;
+    else if (computerChoiceUpper === "PAPER")
+        computerChoiceNumber = 2;
+    else
+        computerChoiceNumber = 3;
+    // determine who won
+    if (playerChoiceNumber === computerChoiceNumber) {
+        whoWon = "Tie! " + playerChoice + " ties " + computerChoice;
+    }
+    else if ((playerChoiceNumber - computerChoiceNumber) === 1) {
+        whoWon = "Player Wins! " + playerChoice + " beats " + computerChoice;
+    }
+    else {
+        whoWon = "Computer Wins! " + computerChoice + " beats " + playerChoice;
+    }
+    // return string saying whoWon
+    return whoWon;
+}
