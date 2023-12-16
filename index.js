@@ -67,3 +67,34 @@ function playRound(playerChoice = "Rock", computerChoice = "Rock") {
     // return string saying whoWon
     return whoWon;
 }
+
+/*
+* play a best of 5 for rock paper scissors
+* no params
+* no return
+*/
+function game() {
+    // create variable to keep track of player wins
+    let playerWins = 0;
+    // create variable to keep track of computer wins
+    let computerWins = 0;
+    // keep playing rounds until computer or player has won 3 rounds
+    while (playerWins < 3 && computerWins < 3) {
+        // prompt player for input of rock, paper, or scissors
+        let playerChoice = prompt("Enter Selection of Rock, Paper, or Scissors.");
+        // play round
+        let whoWins = playRound(playerChoice, getComputerChoice());
+        console.log(whoWins);
+        // determine who won to add to the respective counter
+        if (whoWins.substring(0, whoWins.indexOf(" ")) === "Player")
+            playerWins++;
+        else if (whoWins.substring(0, whoWins.indexOf(" ")) === "Computer")
+            computerWins++;
+    }
+    if (playerWins === 3)
+        return "Player wins the best of 5"
+    else
+        return "Computer wins the best of 5";
+}
+
+console.log(game());
