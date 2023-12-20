@@ -97,4 +97,11 @@ function game() {
         return "Computer wins the best of 5";
 }
 
-console.log(game());
+// add event to rock, paper, and scissors buttons to play a round with the appropriate button
+let buttons = document.querySelectorAll("button");
+
+buttons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        console.log(playRound(e.target.id, getComputerChoice()));
+    })
+});
