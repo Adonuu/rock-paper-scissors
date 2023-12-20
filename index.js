@@ -56,13 +56,13 @@ function playRound(playerChoice = "Rock", computerChoice = "Rock") {
         computerChoiceNumber = 3;
     // determine who won
     if (playerChoiceNumber === computerChoiceNumber) {
-        whoWon = "Tie! " + playerChoice + " ties " + computerChoice;
+        whoWon = "Tie";
     }
     else if ((playerChoiceNumber - computerChoiceNumber) === 1) {
-        whoWon = "Player Wins! " + playerChoice + " beats " + computerChoice;
+        whoWon = "Player";
     }
     else {
-        whoWon = "Computer Wins! " + computerChoice + " beats " + playerChoice;
+        whoWon = "Computer";
     }
     // return string saying whoWon
     return whoWon;
@@ -102,6 +102,22 @@ let buttons = document.querySelectorAll("button");
 
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
-        console.log(playRound(e.target.id, getComputerChoice()));
+        let result = playRound(e.target.id, getComputerChoice());
+
+        let playerResult = document.querySelector("#playerWins");
+        let computerResult = document.querySelector("#computerWins");
+        let winner = document.querySelector("#winner");
+
+        if (result === "Player") {
+            playerResult.textContent = parseInt(playerResult.textContent) + 1;
+        } else if (result === "Computer") {
+            computerResult.textContent = parseInt(computerResult.textContent) + 1;
+        }
+
+        if (parseInt(playerResult.textContent) === 5) {
+            winner.textContent = 'Player Wins';
+        } else if (parseInt(computerResult.textContent) === 5) {
+            winner.textContent = 'Computer Wins';
+        }
     })
 });

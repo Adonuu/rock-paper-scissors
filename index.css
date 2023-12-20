@@ -1,0 +1,12 @@
+#playerContainer, #computerContainer {
+    display: flex;
+    column-gap: 0.25%;
+}
+
+#buttonContainer {
+    margin-bottom: 1%;
+}
+
+button {
+    width: 6%;
+}
